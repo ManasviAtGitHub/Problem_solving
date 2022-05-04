@@ -11,8 +11,8 @@ def twoSumSorted(slist,target):
         #shift left pointer to right
         elif sum<target:
             l +=1
-        else:
-            return [l, r]
+        # else:
+            # return [l, r]
 
 
 print(twoSumSorted([2,7,11,15], target = 9))
