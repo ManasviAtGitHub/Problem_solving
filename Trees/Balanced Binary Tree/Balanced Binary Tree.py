@@ -1,5 +1,5 @@
 #https://leetcode.com/problems/balanced-binary-tree/
-def isBalanced(self, root: Optional[TreeNode]) -> bool:
+def isBalanced(self, root):
         
         balance = [True]
         
