@@ -1,3 +1,7 @@
+
+"""
+https://leetcode.com/problems/k-closest-points-to-origin/
+"""
 import heapq
 def kClosest(points, k):
         minHeap = []

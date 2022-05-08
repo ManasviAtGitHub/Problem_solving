@@ -1,5 +1,7 @@
 import heapq
-
+"""
+https://leetcode.com/problems/last-stone-weight/
+"""
 def lastStone(stones):
     stones = [-s for s in stones]
     heapq.heapify(stones)
