@@ -12,7 +12,7 @@ def rob(nums):
         
         if len(nums)==1:
             return nums[0]
-        
+            
         return max(robHouses(nums[:-1]), robHouses(nums[1:]))
 
 
