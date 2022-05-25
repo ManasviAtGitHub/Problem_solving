@@ -1,3 +1,6 @@
+"""
+https://leetcode.com/problems/merge-intervals/
+"""
 def merge(intervals):
         
         intervals.sort(key = lambda i :i[0])
