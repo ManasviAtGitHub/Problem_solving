@@ -1,33 +1,60 @@
 """https://leetcode.com/problems/permutation-in-string"""
 
-def checkInclusion(self, s1: str, s2: str) -> bool:
-        if len(s1) > len(s2): return False
+def checkInclusion(s1, s2):
+      if len(s1) > len(s2) : return False
+      
+      s1_c, s2_c= [0] * 26, [0] * 26
+      
+      #initializing window of size s1
+      for i in range(len(s1)):
+        s1_c[ord(s1[i]) - ord('a')] +=1
+        s2_c[ord(s2[i]) - ord('a')] +=1
+      
+      #remember we are looking for 26 matches
+      matches = 0
+      
+      for i in range(26):
+        matches+=(1 if s1_c[i] == s2_c[i] else 0)
+      
+      
+      left = 0
+      
+      for right in range(len(s1), len(s2)):
         
-        s1Count, s2Count = [0] * 26, [0] * 26
-        for i in range(len(s1)):
-            s1Count[ord(s1[i]) - ord('a')] += 1
-            s2Count[ord(s2[i]) - ord('a')] += 1
+        if matches == 26 : return True
         
-        matches = 0
-        for i in range(26):
-            matches += (1 if s1Count[i] == s2Count[i] else 0)
+        i_next = ord(s2[right]) - ord('a')
         
-        l = 0
-        for r in range(len(s1), len(s2)):
-            if matches == 26: return True
-            
-            index = ord(s2[r]) - ord('a')
-            s2Count[index] += 1
-            if s1Count[index] == s2Count[index]:
-                matches += 1
-            elif s1Count[index] + 1 == s2Count[index]:
-                matches -= 1
-            
-            index = ord(s2[l]) - ord('a')
-            s2Count[index] -= 1
-            if s1Count[index] == s2Count[index]:
-                matches += 1
-            elif s1Count[index] - 1 == s2Count[index]:
-                matches -= 1
-            l += 1
-        return matches == 26 
+        prev = ord(s2[left]) - ord('a')
+        
+        
+        s2_c[prev]-=1
+        
+        if s1_c[prev] == s2_c[prev]:
+          matches+=1
+        elif s2_c[prev] == s1_c[prev] - 1:
+          matches -=1
+        
+        
+        
+        s2_c[i_next]+=1
+        
+        
+        if s2_c[i_next] == s1_c[i_next]:
+          matches +=1
+        elif s1_c[i_next]+1 == s2_c[i_next]:
+          matches-=1
+        
+        
+        
+        left+=1
+        
+      
+      return matches == 26
+
+
+
+
+print(checkInclusion(s1 = "ab", s2 = "eidbaooo"))
+
+print(checkInclusion(s1 = "ab", s2 = "eidboaoo"))
