@@ -28,14 +28,27 @@ def checkInclusion(s1, s2):
         prev = ord(s2[left]) - ord('a')
         
         
+
+        # we obtain the previous character index in array
+        # now two cases are possible
+        # if they both are equal now 
+        # we increment matches, counter of matching character (this is further adjusted in the next case)
+        # it will be generally the case when we have no matching previous character
+        # else the it actually matched previously so we decrement from string 1 and check it
+        # this time decrementing matches (this will be the case when we have a matching previous character)
+
         s2_c[prev]-=1
         
         if s1_c[prev] == s2_c[prev]:
-          matches+=1
+          matches +=1
         elif s2_c[prev] == s1_c[prev] - 1:
           matches -=1
         
         
+
+        # this is to check whether current character matches, so we increment matches
+        # it only happens if both strings has that character
+        # or else we just check to balance out the matches counter
         
         s2_c[i_next]+=1
         
