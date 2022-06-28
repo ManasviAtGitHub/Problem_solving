@@ -14,9 +14,6 @@ Input : n = 5, edges =[[0,1], [1,2], [3,4]]
 Output : 2
 """
 
-from email.errors import CloseBoundaryNotFoundDefect
-
-
 def countComponets(n, edges):
     
     
